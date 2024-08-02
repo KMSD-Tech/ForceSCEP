@@ -1,7 +1,7 @@
 # ForceSCEP
 
 # Summary
-This PowerShell script is designed to manage the installation and verification of SCEP certificates on a device. It checks for the presence of a specific registry key and a SCEP certificate issued by a specified issuer. If the certificate is not present, it triggers an Intune sync and waits for the certificate to be installed. If the network authentication type is WPA2-Enterprise, it disconnects and reconnects to the current SSID. Finally, it sets a registry key to indicate that the process has been completed.
+This PowerShell script is designed to manage the installation and verification of SCEP certificates on a device.  Specifically, it can help ensure that Wi-Fi authentication switches to using the proper user-certificate when it's made available on a device via Intune sync. It checks for the presence of a specific registry key and a SCEP certificate issued by a specified issuer. If the certificate is not present, it triggers an Intune sync and waits for the certificate to be installed. If the network authentication type is WPA2-Enterprise, it disconnects and reconnects to the current SSID. Finally, it sets a registry key to indicate that the process has been completed.
 
 # README
 SCEP Certificate Management Script
