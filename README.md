@@ -9,13 +9,19 @@ This script is used to manage the installation and verification of SCEP certific
 
 I would recommend compiling this as an exe using something like ps2exe.  You should also probably sign the PowerShell script before compiling.  The only variable that needs to be set in the script is the issuer name for your CA
 
-Once you have a compiled exe, just deploy it with something like this (this would make a scheduled task that runs for all users on logon):
+Once you have a compiled exe, just deploy it with something like this (this would make a scheduled task or startup item that runs for all users on logon):
 
 `if not exist "%programdata%\scripts" mkdir "%programdata%\scripts"`
 
 `if exist "%programdata%\scripts" copy /y forcescep.exe "%programdata%\scripts"`
 
 `schtasks /create /tn "Force SCEP Cert" /tr "%programdata%\scripts\forcescep.exe" /sc ONLOGON /ru "BUILTIN\Users" /f`
+
+-- or --
+
+`REG ADD "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /V "Force SCEP" /T REG_SZ /F /D "\"c:\programdata\scripts\forcescep.exe\""`
+
+I had issues with getting an access denied when running the scheduled task.  I also had to exempt the exe using ASR rules as it was blocking it on my test devices.
 
 # Features
 Checks for the presence of a specific registry key.
