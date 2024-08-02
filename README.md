@@ -15,7 +15,7 @@ Once you have a compiled exe, just deploy it with something like this (this woul
 
 `if exist "%programdata%\scripts" copy /y forcescep.exe "%programdata%\scripts"`
 
-`schtasks /create /tn "Force SCEP Cert" /tr "%programdata%\scripts\forcescep.exe" /sc ONLOGON /rl HIGHEST /ru "BUILTIN\Users" /f`
+`schtasks /create /tn "Force SCEP Cert" /tr "%programdata%\scripts\forcescep.exe" /sc ONLOGON /ru "BUILTIN\Users" /f`
 
 # Features
 Checks for the presence of a specific registry key.
