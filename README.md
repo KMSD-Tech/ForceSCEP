@@ -7,11 +7,13 @@ This PowerShell script is designed to manage the installation and verification o
 SCEP Certificate Management Script
 This script is used to manage the installation and verification of SCEP certificates on a device.  In an environment where you are utilizing EAP-TEAP, a device will be initially authenticated using the device certificate.  After the user certificate is installed, there is currently no method to switch to the user-certificate instead of the device-certificate.  This script facilitates that switchover.
 
-I would recommend compiling this as an exe using something like ps2exe.  You should also probably sign the PowerShell script before compiling.
+I would recommend compiling this as an exe using something like ps2exe.  You should also probably sign the PowerShell script before compiling.  The only variable that needs to be set in the script is the issuer name for your CA
 
-Once you have a compiled exe, just deploy it with something like this:
-``if exist "%programdata%\scripts" copy /y forcescep.exe "%programdata%\scripts"
-schtasks /create /tn "Force SCEP Cert" /tr "%programdata%\scripts\forcescep.exe" /sc ONLOGON /rl HIGHEST /ru "BUILTIN\Users" /f``
+Once you have a compiled exe, just deploy it with something like this (this would make a scheduled task that runs for all users on logon):
+
+`if exist "%programdata%\scripts" copy /y forcescep.exe "%programdata%\scripts"`
+
+`schtasks /create /tn "Force SCEP Cert" /tr "%programdata%\scripts\forcescep.exe" /sc ONLOGON /rl HIGHEST /ru "BUILTIN\Users" /f`
 
 # Features
 Checks for the presence of a specific registry key.
