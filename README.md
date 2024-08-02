@@ -11,6 +11,8 @@ I would recommend compiling this as an exe using something like ps2exe.  You sho
 
 Once you have a compiled exe, just deploy it with something like this (this would make a scheduled task that runs for all users on logon):
 
+`if not exist "%programdata%\scripts" mkdir "%programdata%\scripts"`
+
 `if exist "%programdata%\scripts" copy /y forcescep.exe "%programdata%\scripts"`
 
 `schtasks /create /tn "Force SCEP Cert" /tr "%programdata%\scripts\forcescep.exe" /sc ONLOGON /rl HIGHEST /ru "BUILTIN\Users" /f`
