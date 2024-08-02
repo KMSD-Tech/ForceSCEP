@@ -28,7 +28,9 @@ Run the script on the device where you want to manage the SCEP certificate.
 
 # Requirements
 PowerShell 5.1 or later
+
 Network access
+
 Intune Management Extension
 
 # Note
